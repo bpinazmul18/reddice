@@ -5,7 +5,7 @@ import Routes from "./route/Routes";
 class App extends Component {
   render() {
     return (
-      <div className="container-fluid">
+      <div className="container-fluid bg-light">
         <NavigationBar />
         <Routes />
       </div>

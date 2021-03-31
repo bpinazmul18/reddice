@@ -1,6 +1,5 @@
 import React from "react";
-import { Link, Route, Switch } from "react-router-dom";
-import SignUp from "./SignUp";
+import { Link } from "react-router-dom";
 
 const NavigationBar = () => {
   return (
@@ -21,7 +20,7 @@ const NavigationBar = () => {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ml-auto">
+          <ul className="navbar-nav ml-auto align-items-center">
             <li className="nav-item active mx-3">
               <Link className="nav-link" to="/">
                 Home <span className="sr-only">(current)</span>
@@ -32,7 +31,7 @@ const NavigationBar = () => {
               <Link className="nav-link" to="/signup">
                 <button
                   type="button"
-                  className="btn btn-primary"
+                  className="btn"
                   data-toggle="modal"
                   data-target="#exampleModal"
                   data-whatever="@mdo"
@@ -43,15 +42,15 @@ const NavigationBar = () => {
             </li>
 
             <li className="nav-item mx-3">
-              <Link className="nav-link" to="/signin">
+              <Link className="nav-link" to="/login">
                 <button
                   type="button"
-                  className="btn btn-primary"
+                  className="btn"
                   data-toggle="modal"
                   data-target="#exampleModal"
                   data-whatever="@mdo"
                 >
-                  Sign in
+                  Login
                 </button>
               </Link>
             </li>
