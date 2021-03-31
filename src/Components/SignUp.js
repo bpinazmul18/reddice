@@ -1,7 +1,40 @@
 import React from "react";
+import timeZones from "../data/TimeZone";
+import _ from "lodash";
 
 class SignUp extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      username: "",
+      email: "",
+      password: "",
+      repeatPassword: "",
+      timezones: "",
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+
+    console.log(this.state);
+  }
+
   render() {
+    const options = _.map(timeZones, (val, key) => (
+      <option key={key} value={val}>
+        {key}
+      </option>
+    ));
+
     return (
       <>
         <div
@@ -28,18 +61,39 @@ class SignUp extends React.Component {
                 </button>
               </div>
               <div className="modal-body">
-                <form>
+                <form onSubmit={this.handleSubmit}>
+                  <div className="form-group">
+                    <label htmlFor="username" className="col-form-label">
+                      UserName:
+                    </label>
+                    <input
+                      onChange={this.handleChange}
+                      name="username"
+                      className="form-control"
+                      id="username"
+                      type="text"
+                    />
+                  </div>
+
                   <div className="form-group">
                     <label htmlFor="email" className="col-form-label">
                       Email:
                     </label>
-                    <input className="form-control" id="email" type="email" />
+                    <input
+                      onChange={this.handleChange}
+                      name="email"
+                      className="form-control"
+                      id="email"
+                      type="email"
+                    />
                   </div>
                   <div className="form-group">
                     <label htmlFor="password" className="col-form-label">
                       Password:
                     </label>
                     <input
+                      onChange={this.handleChange}
+                      name="password"
                       className="form-control"
                       id="password"
                       type="password"
@@ -51,10 +105,37 @@ class SignUp extends React.Component {
                       Repeat-Password:
                     </label>
                     <input
+                      onChange={this.handleChange}
+                      name="repeatPassword"
                       className="form-control"
                       id="repeat-password"
                       type="password"
                     />
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="timezone" className="col-form-label">
+                      Timezone:
+                    </label>
+
+                    <select
+                      className="form-control"
+                      name="timezone"
+                      onChange={this.handleChange}
+                      aria-label="Default select example"
+                    >
+                      <option value="" disabled>
+                        Choose Your Timezone
+                      </option>
+
+                      {options}
+                    </select>
+                  </div>
+
+                  <div className="form-group">
+                    <button type="submit" className="btn btn-primary">
+                      Sign Up
+                    </button>
                   </div>
                 </form>
               </div>
@@ -65,9 +146,6 @@ class SignUp extends React.Component {
                   data-dismiss="modal"
                 >
                   Close
-                </button>
-                <button type="button" className="btn btn-primary">
-                  Sign Up
                 </button>
               </div>
             </div>

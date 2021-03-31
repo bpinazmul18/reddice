@@ -44,6 +44,12 @@ class Login extends React.Component {
                     type="password"
                   />
                 </div>
+
+                <div className="form-group">
+                  <button type="submit" className="btn btn-primary">
+                    Login
+                  </button>
+                </div>
               </form>
             </div>
             <div className="modal-footer">
@@ -53,9 +59,6 @@ class Login extends React.Component {
                 data-dismiss="modal"
               >
                 Close
-              </button>
-              <button type="button" className="btn btn-primary">
-                Login
               </button>
             </div>
           </div>
