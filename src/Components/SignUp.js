@@ -3,7 +3,7 @@ import timeZones from "../data/TimeZone";
 import _ from "lodash";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import {userSignupRequest} from "../actions/signupActions";
+import { userSignupRequest } from "../actions/signupActions";
 
 class SignUp extends React.Component {
   constructor(props) {
@@ -130,6 +130,7 @@ class SignUp extends React.Component {
                       name="timezone"
                       onChange={this.handleChange}
                       aria-label="Default select example"
+                      defaultValue=""
                     >
                       <option value="" disabled>
                         Choose Your Timezone
