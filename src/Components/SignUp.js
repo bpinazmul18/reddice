@@ -1,6 +1,9 @@
 import React from "react";
 import timeZones from "../data/TimeZone";
 import _ from "lodash";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import {userSignupRequest} from "../actions/signupActions";
 
 class SignUp extends React.Component {
   constructor(props) {
@@ -25,7 +28,11 @@ class SignUp extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    console.log(this.state);
+    this.props.userSignupRequest(this.state);
+
+    // axios.post("/api/users", { user: this.state });
+    //
+    // console.log(this.state);
   }
 
   render() {
@@ -156,4 +163,12 @@ class SignUp extends React.Component {
   }
 }
 
-export default SignUp;
+SignUp.propType = {
+  userSignupRequest: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => {
+  return { state };
+};
+
+export default connect(mapStateToProps, { userSignupRequest })(SignUp);
